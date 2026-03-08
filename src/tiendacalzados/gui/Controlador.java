@@ -1,6 +1,6 @@
 package barcafeteria.gui;
 
-import barcafeteria.base.Departamento;
+import barcafeteria.base.Marca;
 import barcafeteria.base.Empleado;
 import barcafeteria.base.Producto;
 import barcafeteria.util.Util;
@@ -186,7 +186,7 @@ public class Controlador implements ActionListener, KeyListener, ListSelectionLi
 
             case "addDepartamento":
                 if (comprobarCamposDepartamento()) {
-                    modelo.guardarObjeto(new Departamento(vista.txtDepartamento.getText()));
+                    modelo.guardarObjeto(new Marca(vista.txtDepartamento.getText()));
                     limpiarCamposDepartamento();
                 } else {
                     Util.mostrarMensajeError("No ha sido posible insertar el departamento en la base de datos.\n" +
@@ -198,9 +198,9 @@ public class Controlador implements ActionListener, KeyListener, ListSelectionLi
             case "modDepartamento":
                 if (vista.listDepartamentos.getSelectedValue() != null) {
                     if (comprobarCamposDepartamento()) {
-                        Departamento departamento = vista.listDepartamentos.getSelectedValue();
-                        departamento.setDepartamento(vista.txtDepartamento.getText());
-                        modelo.modificarObjeto(departamento);
+                        Marca marca = vista.listDepartamentos.getSelectedValue();
+                        marca.setDepartamento(vista.txtDepartamento.getText());
+                        modelo.modificarObjeto(marca);
                         limpiarCamposDepartamento();
                     } else {
                         Util.mostrarMensajeError("No ha sido posible modificar el departamento en la base de datos.\n" +
@@ -262,8 +262,8 @@ public class Controlador implements ActionListener, KeyListener, ListSelectionLi
             }
         } else if (e.getSource() == vista.listDepartamentos) {
             if (vista.listDepartamentos.getSelectedValue() != null) {
-                Departamento departamento = vista.listDepartamentos.getSelectedValue();
-                vista.txtDepartamento.setText(departamento.getDepartamento());
+                Marca marca = vista.listDepartamentos.getSelectedValue();
+                vista.txtDepartamento.setText(marca.getDepartamento());
             }
         }
     }
@@ -339,8 +339,8 @@ public class Controlador implements ActionListener, KeyListener, ListSelectionLi
 
     private void listarDepartamentos() {
         vista.dlmDepartamentos.clear();
-        for (Departamento departamento : modelo.getDepartamentos()) {
-            vista.dlmDepartamentos.addElement(departamento);
+        for (Marca marca : modelo.getDepartamentos()) {
+            vista.dlmDepartamentos.addElement(marca);
         }
     }
 
@@ -358,10 +358,10 @@ public class Controlador implements ActionListener, KeyListener, ListSelectionLi
         }
     }
 
-    private void listarDepartamentosBusqueda(ArrayList<Departamento> lista) {
+    private void listarDepartamentosBusqueda(ArrayList<Marca> lista) {
         vista.dlmDepartamentosBusqueda.clear();
-        for (Departamento departamento : lista) {
-            vista.dlmDepartamentosBusqueda.addElement(departamento);
+        for (Marca marca : lista) {
+            vista.dlmDepartamentosBusqueda.addElement(marca);
         }
     }
 

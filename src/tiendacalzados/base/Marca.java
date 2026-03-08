@@ -2,15 +2,15 @@ package barcafeteria.base;
 
 import org.bson.types.ObjectId;
 
-public class Departamento {
+public class Marca {
     private ObjectId id;
     private String departamento;
 
-    public Departamento(String departamento) {
+    public Marca(String departamento) {
         this.departamento = departamento;
     }
 
-    public Departamento() {
+    public Marca() {
 
     }
 

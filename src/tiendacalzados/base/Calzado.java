@@ -1,4 +1,4 @@
-package barcafeteria.base;
+package tiendacalzados.base;
 
 import org.bson.types.ObjectId;
 

@@ -1,6 +1,6 @@
 package barcafeteria.gui;
 
-import barcafeteria.base.Departamento;
+import barcafeteria.base.Marca;
 import barcafeteria.base.Empleado;
 import barcafeteria.base.Producto;
 import com.mongodb.MongoClient;
@@ -90,8 +90,8 @@ public class Modelo {
         return lista;
     }
 
-    public ArrayList<Departamento> getDepartamentos() {
-        ArrayList<Departamento> lista = new ArrayList<>();
+    public ArrayList<Marca> getDepartamentos() {
+        ArrayList<Marca> lista = new ArrayList<>();
 
         for (Document document : departamentos.find()) {
             lista.add(documentToDepartamento(document));
@@ -99,8 +99,8 @@ public class Modelo {
         return lista;
     }
 
-    public ArrayList<Departamento> getDepartamentos(String comparador) {
-        ArrayList<Departamento> lista = new ArrayList<>();
+    public ArrayList<Marca> getDepartamentos(String comparador) {
+        ArrayList<Marca> lista = new ArrayList<>();
         Document query = new Document();
         List<Document> listaCriterios = new ArrayList<>();
 
@@ -119,7 +119,7 @@ public class Modelo {
             productos.insertOne(objectToDocument(obj));
         } else if (obj instanceof Empleado) {
             empleados.insertOne(objectToDocument(obj));
-        } else if (obj instanceof Departamento) {
+        } else if (obj instanceof Marca) {
             departamentos.insertOne(objectToDocument(obj));
         }
     }
@@ -131,9 +131,9 @@ public class Modelo {
         } else if (obj instanceof Empleado) {
             Empleado empleado = (Empleado) obj;
             empleados.replaceOne(new Document("_id", empleado.getId()), objectToDocument(empleado));
-        } else if (obj instanceof Departamento) {
-            Departamento departamento = (Departamento) obj;
-            departamentos.replaceOne(new Document("_id", departamento.getId()), objectToDocument(departamento));
+        } else if (obj instanceof Marca) {
+            Marca marca = (Marca) obj;
+            departamentos.replaceOne(new Document("_id", marca.getId()), objectToDocument(marca));
         }
     }
 
@@ -144,9 +144,9 @@ public class Modelo {
         } else if (obj instanceof Empleado) {
             Empleado empleado = (Empleado) obj;
             empleados.deleteOne(objectToDocument(empleado));
-        } else if (obj instanceof Departamento) {
-            Departamento departamento = (Departamento) obj;
-            departamentos.deleteOne(objectToDocument(departamento));
+        } else if (obj instanceof Marca) {
+            Marca marca = (Marca) obj;
+            departamentos.deleteOne(objectToDocument(marca));
         }
     }
 
@@ -170,12 +170,12 @@ public class Modelo {
         return empleado;
     }
 
-    public Departamento documentToDepartamento(Document dc) {
-        Departamento departamento = new Departamento();
+    public Marca documentToDepartamento(Document dc) {
+        Marca marca = new Marca();
 
-        departamento.setId(dc.getObjectId("_id"));
-        departamento.setDepartamento(dc.getString("departamento"));
-        return departamento;
+        marca.setId(dc.getObjectId("_id"));
+        marca.setDepartamento(dc.getString("marca"));
+        return marca;
     }
 
     public Document objectToDocument(Object obj) {
@@ -194,10 +194,10 @@ public class Modelo {
             dc.append("apellidos", empleado.getApellidos());
             dc.append("nacimiento", empleado.getNacimiento().toString());
 
-        } else if (obj instanceof Departamento) {
-            Departamento departamento = (Departamento) obj;
+        } else if (obj instanceof Marca) {
+            Marca marca = (Marca) obj;
 
-            dc.append("departamento", departamento.getDepartamento());
+            dc.append("marca", marca.getDepartamento());
         } else {
             return null;
         }

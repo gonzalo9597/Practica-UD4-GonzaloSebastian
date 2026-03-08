@@ -1,6 +1,6 @@
 package barcafeteria.gui;
 
-import barcafeteria.base.Departamento;
+import barcafeteria.base.Marca;
 import barcafeteria.base.Empleado;
 import barcafeteria.base.Producto;
 import com.github.lgooddatepicker.components.DatePicker;
@@ -42,22 +42,22 @@ public class Vista extends JFrame {
     // Departamentos
     JTextField txtDepartamento;
 
-    JList<Departamento> listDepartamentos;
+    JList<Marca> listDepartamentos;
 
     JButton btnAddDepartamento;
     JButton btnModDepartamento;
     JButton btnDelDepartamento;
 
     JTextField txtBuscarDepartamento;
-    JList<Departamento> listBusquedaDepartamento;
+    JList<Marca> listBusquedaDepartamento;
 
     // Modelos
     DefaultListModel<Producto> dlmProductos;
     DefaultListModel<Empleado> dlmEmpleados;
-    DefaultListModel<Departamento> dlmDepartamentos;
+    DefaultListModel<Marca> dlmDepartamentos;
     DefaultListModel<Producto> dlmProductosBusqueda;
     DefaultListModel<Empleado> dlmEmpleadosBusqueda;
-    DefaultListModel<Departamento> dlmDepartamentosBusqueda;
+    DefaultListModel<Marca> dlmDepartamentosBusqueda;
 
     // Menu
     JMenuItem itemConectar;
